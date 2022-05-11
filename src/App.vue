@@ -80,5 +80,11 @@ header{
 
 main{
   background-color: $bg-main;
+  h2{
+    padding-left: 20px;
+    color: $bg-header;
+    font-weight: 400;
+    font-style: italic;
+  }
 }
 </style>

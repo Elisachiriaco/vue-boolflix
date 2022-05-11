@@ -3,7 +3,7 @@
       <h2>{{title}}</h2>
       <ul>
         <li @mouseover="myshow" v-for="item in items" :key="item.id">
-          <img :src="'https://image.tmdb.org/t/p/w185/' + item.poster_path" alt=""> <br>
+          <img :src="'https://image.tmdb.org/t/p/w342/' + item.poster_path" alt=""> <br>
           <div class="showinfo" :class="show ? 'active' : '' ">
           Titolo: {{item.title ? item.title : item.name}} <br>
           Titolo originale: {{item.original_title ? item.original_title : item.original_name}}<br>
@@ -19,7 +19,8 @@
           Voto: 
           <i v-for="index in star(item.vote_average)" :key="index" class="fa-solid fa-star"></i>
           <span v-if="item.vote_average === 0"><i class="fa-regular fa-star"></i>
-          </span>
+          </span> <br>
+          Trama: {{item.overview}}
           </div>
         </li>
       </ul>
@@ -84,6 +85,7 @@ img{
     justify-content: center;
     padding: 20px 10px;
     background-color: rgba($color: black, $alpha: 0.9);
+    overflow-y: auto;
 }
 
 .active{

@@ -23,7 +23,7 @@ export default {
     methods: {
         cerca(){
             this.$emit('performSearch',this.search);
-            this.search = ''
+            this.search = '';
         }
     }
 }
