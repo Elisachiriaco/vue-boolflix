@@ -77,4 +77,8 @@ header{
     color: $color-title;
   }
 }
+
+main{
+  background-color: $bg-main;
+}
 </style>

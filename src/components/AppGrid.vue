@@ -1,9 +1,10 @@
 <template>
   <section>
-    <h2>{{title}}</h2>
+      <h2>{{title}}</h2>
       <ul>
-        <li v-for="item in items" :key="item.id">
+        <li @mouseover="myshow" v-for="item in items" :key="item.id">
           <img :src="'https://image.tmdb.org/t/p/w185/' + item.poster_path" alt=""> <br>
+          <div class="showinfo" :class="show ? 'active' : '' ">
           Titolo: {{item.title ? item.title : item.name}} <br>
           Titolo originale: {{item.original_title ? item.original_title : item.original_name}}<br>
           <div v-if="item.original_language === 'it'">
@@ -15,7 +16,11 @@
           <div v-else>
           Lingua: {{item.original_language}}
           </div>
-          Voto: {{item.vote_average}} <br>
+          Voto: 
+          <i v-for="index in star(item.vote_average)" :key="index" class="fa-solid fa-star"></i>
+          <span v-if="item.vote_average === 0"><i class="fa-regular fa-star"></i>
+          </span>
+          </div>
         </li>
       </ul>
   </section>
@@ -32,17 +37,56 @@ export default {
     },
   data() {
     return {
-
+      show: false,
     };
   },
   methods: {
-
+    myshow(){
+      return this.show = true 
+    },
+    star(number){
+      return Math.round(number / 2);
+    }
   }
 };
 </script>
 
 <style lang="scss">
+ul{
+    color: white;
+    width: 100%;
+    height: 400px;
+    display: flex;
+    flex-flow: row nowrap;
+    list-style-type: none;
+    overflow-x:auto;
+      li{
+        position: relative;
+        width: 35%;
+        margin: 15px;
+    }    
+}
 .flag{
-  width: 50px;
+    width: 20px;
+    height: 20px;
+}   
+img{
+  height:280px;
+}
+
+.showinfo{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 280px;
+    display: none;
+    justify-content: center;
+    padding: 20px 10px;
+    background-color: rgba($color: black, $alpha: 0.9);
+}
+
+.active{
+  display: block;
 }
 </style>
