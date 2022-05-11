@@ -1,4 +1,9 @@
+// bootstrap
 @import "~bootstrap/scss/bootstrap.scss";
+
+// fontawesome
+$fa-font-path: './webfonts';
+@import '~@fortawesome/fontawesome-free/scss/fontawesome.scss';
 
 // Styles
 @import './vars.scss';
