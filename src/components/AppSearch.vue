@@ -1,7 +1,14 @@
 <template>
-    <div>
-        <input type="text" v-model="search" @keyup.enter="$emit('performSearch', search)">
-        <button @click="cerca">Cerca</button>
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-6">
+                  <h1>Boolflix</h1>
+            </div>
+            <div class="col-6 justify-content-end">
+                <input type="text" v-model="search" @keyup.enter="$emit('performSearch', search)">
+                <button @click="cerca">Cerca</button>
+            </div>
+        </div>
     </div>
 </template>
 

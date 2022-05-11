@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <header>
-      <h1>Boolflix</h1>
       <app-search @performSearch="search"/>
     </header>
     <main>
@@ -71,4 +70,11 @@ export default {
 @import "./style/general.scss";
 @import "./style/vars.scss";
 
+header{
+  height: 60px;
+  background-color: $bg-header;
+  h1{
+    color: $color-title;
+  }
+}
 </style>

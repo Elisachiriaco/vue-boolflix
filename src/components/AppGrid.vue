@@ -6,8 +6,15 @@
           <img :src="'https://image.tmdb.org/t/p/w185/' + item.poster_path" alt=""> <br>
           Titolo: {{item.title ? item.title : item.name}} <br>
           Titolo originale: {{item.original_title ? item.original_title : item.original_name}}<br>
-          Lingua: {{item.original_language}} <br>
-          <!-- <img :src="require('../assets/' + item.original_language+'.jpg') " alt=""> -->
+          <div v-if="item.original_language === 'it'">
+           <span>Lingua:</span> <img class="flag" :src="require('../assets/it.jpg')"  alt="">
+          </div>
+          <div v-else-if="item.original_language === 'en'">
+          <span>Lingua: </span><img class="flag" :src="require('../assets/en.jpg')"  alt="">
+          </div>
+          <div v-else>
+          Lingua: {{item.original_language}}
+          </div>
           Voto: {{item.vote_average}} <br>
         </li>
       </ul>
@@ -34,6 +41,8 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
-
+<style lang="scss">
+.flag{
+  width: 50px;
+}
 </style>
