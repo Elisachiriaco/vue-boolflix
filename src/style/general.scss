@@ -9,3 +9,7 @@ $fa-font-path: './webfonts';
 
 // Styles
 @import './vars.scss';
+
+body{
+    height: 100vh;
+}

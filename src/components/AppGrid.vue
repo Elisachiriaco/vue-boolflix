@@ -2,6 +2,7 @@
   <section>
       <h2>{{title}}</h2>
       <ul>
+        <li class="noresult" v-if="items.length === 0">Non ci sono risultati per questa ricerca</li>
         <li @mouseenter="myshow" @mouseleave="noshow" v-for="item in items" :key="item.id">
           <img :src="item.poster_path ? 'https://image.tmdb.org/t/p/w342/' + item.poster_path : require('../assets/netflix.png')" alt=""> <br>
           <div class="showinfo" :class="show ? 'active' : '' ">
@@ -86,7 +87,7 @@ img{
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 200px;
     height: 280px;
     display: none;
     justify-content: center;
@@ -98,5 +99,27 @@ img{
 
 .active{
   display: block;
+}
+
+.noresult{
+  color: black;
+  font-style: italic;
+}
+// scrollbar
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #B5B5B5; 
+}
+ 
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
 }
 </style>
