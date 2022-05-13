@@ -21,7 +21,7 @@
           <i v-for="(n,index) in star(item.vote_average)" :key="index" class="fa-solid fa-star"></i>
           <span v-if="item.vote_average === 0"><i class="fa-regular fa-star"></i>
           </span> <br>
-          Trama: {{item.overview}}
+          Trama: {{item.overview.length === 0 ? 'Non trovata' : item.overview }} 
           </div>
         </li>
       </ul>
@@ -103,6 +103,11 @@ img{
 
 .noresult{
   color: black;
+  font-style: italic;
+}
+
+.vote{
+  color:black;
   font-style: italic;
 }
 // scrollbar
