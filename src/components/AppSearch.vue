@@ -5,8 +5,12 @@
                   <h1>Boolflix</h1>
             </div>
             <div class="col-6 justify-content-end">
-                <input type="text" v-model="search" @keyup.enter="$emit('performSearch', search)">
-                <button @click="cerca">Cerca</button>
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Cerca un film o una serie" aria-label="Cerca un film o una serie" aria-describedby="basic-addon2" v-model="search" @keyup.enter="$emit('performSearch', search)">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button" @click="cerca">Cerca</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

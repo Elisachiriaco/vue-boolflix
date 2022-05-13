@@ -4,7 +4,9 @@
       <app-search @performSearch="search"/>
     </header>
     <main>
+      <app-loader v-if="loading"/>
       <app-grid :items="movies" title="Movies" :loader="loading"/>
+      <app-loader v-if="loadingSeries"/>
       <app-grid :items="series" title="Series" :loader="loadingSeries"/>
     </main>
   </div>
@@ -12,12 +14,14 @@
 
 <script>
 import axios from 'axios';
+import AppLoader from './components/AppLoader.vue'
 import AppSearch from './components/AppSearch.vue';
 import AppGrid from './components/AppGrid.vue';
 
 export default {
   name: 'App',
   components: {
+    AppLoader,
     AppSearch,
     AppGrid
   },

@@ -2,7 +2,7 @@
   <section>
       <h2>{{title}}</h2>
       <ul>
-        <li @mouseover="myshow" v-for="item in items" :key="item.id">
+        <li @mouseenter="myshow" @mouseleave="noshow" v-for="item in items" :key="item.id">
           <img :src="item.poster_path ? 'https://image.tmdb.org/t/p/w342/' + item.poster_path : require('../assets/netflix.png')" alt=""> <br>
           <div class="showinfo" :class="show ? 'active' : '' ">
           Titolo: {{item.title ? item.title : item.name}} <br>
@@ -17,12 +17,9 @@
           Lingua: {{item.original_language}}
           </div>
           Voto: 
-          <span v-for="(n,index) in 5" :key="index">
-            <i :class="n <= transformStar ? 'fa-solid fa-star' : 'fa-regular fa-star' "></i>
-          </span>
-          <!-- <i v-for="(n,index) in star(item.vote_average)" :key="index" class="fa-solid fa-star"></i>
+          <i v-for="(n,index) in star(item.vote_average)" :key="index" class="fa-solid fa-star"></i>
           <span v-if="item.vote_average === 0"><i class="fa-regular fa-star"></i>
-          </span> <br> -->
+          </span> <br>
           Trama: {{item.overview}}
           </div>
         </li>
@@ -48,14 +45,12 @@ export default {
     myshow(){
       return this.show = true 
     },
-    // star(number){
-    //   return Math.round(number / 2);
-    // },
-  },
-  computed:{
-    transformStar(){
-      return parseInt(this.vote_average / 2)
-    }
+    noshow(){
+      return this.show = false 
+    },
+    star(number){
+      return Math.round(number / 2);
+    },
   },
 };
 </script>
@@ -76,6 +71,7 @@ ul{
     }    
     img{
       width: 200px;
+      border-radius: 10px;
     }
 }
 .flag{
@@ -97,6 +93,7 @@ img{
     padding: 20px 10px;
     background-color: rgba($color: black, $alpha: 0.9);
     overflow-y: auto;
+    border-radius: 10px;
 }
 
 .active{
